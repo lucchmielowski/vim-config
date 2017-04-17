@@ -1,5 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
-let g:netrw_dirhist_1='/Users/luc/go/workspace/src/github.com/lucchmielowski/norrisfact-microservices'
-let g:netrw_dirhist_2='/Users/luc/go/workspace/src/github.com/lucchmielowski/norrisfact-microservices/src'
-let g:netrw_dirhist_3='/Users/luc/go/workspace/src/github.com/lucchmielowski/norrisfact-microservices/src/web'
