@@ -74,7 +74,8 @@ Plug 'honza/vim-snippets'
 
 "" Color
 " Plug 'flazz/vim-colorschemes'
-Plug 'dracula/vim'
+" Plug 'dracula/vim'
+Plug 'joshdick/onedark.vim'
 
 "*****************************************************************************
 "" Custom bundles
@@ -250,7 +251,7 @@ set number
 
 let no_buffers_menu=1
 if !exists('g:not_finish_vimplug')
-  colorscheme dracula
+  colorscheme onedark
 endif
 
 set mousemodel=popup
@@ -288,7 +289,6 @@ if &term =~ '256color'
   set t_ut=
 endif
 
-
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
 set scrolloff=3
@@ -316,7 +316,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'dracula'
+let g:airline_theme = 'onedark'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
