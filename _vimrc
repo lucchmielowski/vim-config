@@ -186,7 +186,8 @@ let g:syntastic_go_checkers = ['golint', 'govet']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go']  }
 let g:go_list_type = "quickfix"
 let g:golang_goroot="/usr/local/go"
-
+let g:go_fmt_autosave = 1
+let g:go_metalinter_autosave = 1
 " Required:
 filetype plugin indent on
 
@@ -572,6 +573,9 @@ let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
 let g:syntastic_go_checkers = ['golint', 'govet']
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
+let g:go_metalinter_autosave = 1
+let g:go_metalinter_deadline = "5s"
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 
 let g:go_highlight_types = 1
@@ -717,3 +721,15 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+" Command-T configuration
+let g:CommandTMaxHeight = 30
+let g:CommandTFileScanner = 'watchman'
+let g:CommandTSmartCase = 1
+
+" Personnal mappings
+nmap <silent> <Leader>p <Plug>(CommandT)
+if &term =~ "xterm" || &term =~ "screen"
+    let g:CommandTCancelMap = ['<ESC>', '<C-c>']
+endif
