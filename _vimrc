@@ -610,6 +610,7 @@ augroup go
   au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
   au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
   au FileType go nmap <Leader>db <Plug>(go-doc-browser)
+  au FileType go nmap <Leader>a  <Plug>(go-alternate-edit)
 
   au FileType go nmap <leader>r  <Plug>(go-run)
   au FileType go nmap <leader>t  <Plug>(go-test)
