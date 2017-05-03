@@ -29,6 +29,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
@@ -44,12 +45,20 @@ Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
 Plug 'ervandew/supertab'
 Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-Plug 'wincent/command-t'
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
   Plug 'junegunn/fzf.vim'
+  Plug 'AndrewRadev/splitjoin.vim'
+  Plug 'tpope/vim-surround'
+  Plug 'tomtom/tcomment_vim'
+  Plug 'AndrewRadev/switch.vim'
+  Plug 'junegunn/vim-easy-align'
+  Plug 'sunaku/vim-ruby-minitest'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-bundler'
+  Plug 'tpope/vim-rake'
 endif
 let g:make = 'gmake'
 if exists('make')
@@ -468,6 +477,7 @@ endif
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
+nnoremap \ :Ag<Space>
 
 " snippets
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -723,14 +733,3 @@ else
 endif
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
-
-" Command-T configuration
-let g:CommandTMaxHeight = 30
-let g:CommandTFileScanner = 'watchman'
-let g:CommandTSmartCase = 1
-
-" Personnal mappings
-nmap <silent> <Leader>p <Plug>(CommandT)
-if &term =~ "xterm" || &term =~ "screen"
-    let g:CommandTCancelMap = ['<ESC>', '<C-c>']
-endif
