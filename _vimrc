@@ -80,7 +80,10 @@ if v:version >= 704
 endif
 
 Plug 'honza/vim-snippets'
-
+Plug 'easymotion/vim-easymotion'
+Plug 'Quramy/tsuquyomi'
+Plug 'Valloric/MatchTagAlways'
+Plug 'alvan/vim-closetag'
 "" Color
 " Plug 'flazz/vim-colorschemes'
 " Plug 'dracula/vim'
@@ -197,6 +200,14 @@ let g:go_list_type = "quickfix"
 let g:golang_goroot="/usr/local/go"
 let g:go_fmt_autosave = 1
 let g:go_metalinter_autosave = 1
+
+" JS personnal
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:jsx_ext_required = 0
+let g:syntastic_javascript_eslint_generic = 1
+let g:used_javascript_libs = 'react,vue,requirejs,underscore,ramda'
+
 " Required:
 filetype plugin indent on
 
@@ -493,6 +504,7 @@ let g:syntastic_style_error_symbol = '✗'
 let g:syntastic_style_warning_symbol = '⚠'
 let g:syntastic_auto_loc_list=1
 let g:syntastic_aggregate_errors = 1
+let g:syntastic_check_on_wq = 0
 
 " Tagbar
 nmap <silent> <F4> :TagbarToggle<CR>
@@ -645,7 +657,7 @@ let g:javascript_enable_domhtmlcss = 1
 " vim-javascript
 augroup vimrc-javascript
   autocmd!
-  autocmd FileType javascript set tabstop=4|set shiftwidth=4|set expandtab softtabstop=4
+  autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab softtabstop=2
 augroup END
 
 
@@ -682,7 +694,6 @@ let g:airline#extensions#virtualenv#enabled = 1
 " Default highlight is better than polyglot
 let g:polyglot_disabled = ['python']
 let python_highlight_all = 1
-
 
 "*****************************************************************************
 "*****************************************************************************
@@ -732,4 +743,14 @@ else
   let g:airline_symbols.linenr = ''
 endif
 
+"" Golang tabs
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
+
+"" vim-closetag conf
+let g:closetag_filenames = "*.html,*.xhtml,*.phtml, *.js, *.jsx"
+let g:closetag_emptyTags_caseSensitive = 1
+
+"" MatchTagAlways conf
+let g:mta_use_matchparen_group = 1
+let g:mta_filetypes = { 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1, 'javascript': 1}
+nnoremap <leader>% :MtaJumpToOtherTag<cr>
