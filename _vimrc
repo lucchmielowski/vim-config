@@ -39,7 +39,7 @@ Plug 'fatih/vim-go'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Raimondi/delimitMate'
 Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
+Plug 'vim-syntastic/syntastic'
 Plug 'Yggdroot/indentLine'
 Plug 'avelino/vim-bootstrap-updater'
 Plug 'sheerun/vim-polyglot'
@@ -121,6 +121,9 @@ Plug 'othree/jspc.vim'
 " JSON
 Plug 'elzr/vim-json'
 
+" JSX
+Plug 'mxw/vim-jsx'
+
 " php
 "" PHP Bundle
 Plug 'arnaud-lb/vim-php-namespace'
@@ -130,8 +133,6 @@ Plug 'arnaud-lb/vim-php-namespace'
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
 
-" JSX
-Plug 'mxw/vim-jsx'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -202,8 +203,8 @@ let g:go_fmt_autosave = 1
 let g:go_metalinter_autosave = 1
 
 " JS personnal
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exec = 'eslint_d'
+let g:syntastic_javascript_checkers = ['eslint', 'flow']
+let g:syntastic_javascript_eslint_exe='$(npm bin)/eslint_d -f compact'
 let g:jsx_ext_required = 0
 let g:syntastic_javascript_eslint_generic = 1
 let g:used_javascript_libs = 'react,vue,requirejs,underscore,ramda'
