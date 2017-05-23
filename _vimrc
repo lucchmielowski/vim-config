@@ -85,9 +85,18 @@ Plug 'Quramy/tsuquyomi'
 Plug 'Valloric/MatchTagAlways'
 Plug 'alvan/vim-closetag'
 "" Color
-" Plug 'flazz/vim-colorschemes'
-" Plug 'dracula/vim'
-Plug 'joshdick/onedark.vim'
+Plug 'flazz/vim-colorschemes'
+Plug 'dracula/vim'
+Plug 'ayu-theme/ayu-vim'
+" Plug 'ayu-theme/ayu-vim-airline'
+" Indent line plugin
+Plug 'Yggdroot/indentLine'
+" Plug 'joshdick/onedark.vim'
+" Plug 'rakr/vim-one'
+" Plug 'tomasr/molokai'
+" Plug 'aereal/vim-colors-japanesque'
+"Plug 'kristijanhusak/vim-hybrid-material'
+"Plug 'jdkanani/vim-material-theme'
 
 "*****************************************************************************
 "" Custom bundles
@@ -118,11 +127,15 @@ Plug 'heavenshell/vim-jsdoc'
 Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
 Plug 'othree/jspc.vim'
+
 " JSON
 Plug 'elzr/vim-json'
 
 " JSX
 Plug 'mxw/vim-jsx'
+
+" Typescript
+Plug 'HerringtonDarkholme/yats.vim'
 
 " php
 "" PHP Bundle
@@ -209,6 +222,22 @@ let g:jsx_ext_required = 0
 let g:syntastic_javascript_eslint_generic = 1
 let g:used_javascript_libs = 'react,vue,requirejs,underscore,ramda'
 
+" Typescript personnal
+let g:tsuquyomi_disable_quickfix = 1
+let g:syntastic_typescript_checkers = ['tsuquyomi']
+autocmd FileType typescript setlocal completeopt+=menu,preview
+set nocompatible
+set completeopt+=menuone
+set rtp+=~/work/neocomplete.vim/
+set rtp+=~/work/vimproc.vim/
+set rtp+=~/.cache/neobundle/tsuquyomi/
+
+let g:neocomplete#enable_at_startup = 1
+if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+endif
+let g:neocomplete#force_omni_input_patterns.typescript = '[^. \t]\.\%(\h\w*\)\?'
+
 " Required:
 filetype plugin indent on
 
@@ -270,32 +299,46 @@ let g:session_command_aliases = 1
 syntax on
 set ruler
 set number
-
 let no_buffers_menu=1
+
+
+" Set Vim-specific sequences for RGB colors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 if !exists('g:not_finish_vimplug')
-  colorscheme onedark
+  let ayucolor="mirage"
+  colorscheme ayu
+  let g:enable_bold_font = 1
 endif
 
+set termguicolors
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
-set gfn=Monospace\ 10
+set gfn=Fira\ Code:h14
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
-    set guifont=Menlo:h12
-    set transparency=7
-  endif
+    set guifont=Fira\ Code:h14
+    set macligatures
+endif
 else
   let g:CSApprox_loaded = 1
 
   " IndentLine
   let g:indentLine_enabled = 1
   let g:indentLine_concealcursor = 0
-  let g:indentLine_char = '┆'
+  "let g:indentLine_char = '┆'
   let g:indentLine_faster = 1
 
-  
+  " IndentLine {{
+  let g:indentLine_char = '┆'
+  let g:indentLine_first_char = '┆'
+  let g:indentLine_showFirstIndentLevel = 1
+  let g:indentLine_setColors = 0
+  " }}"}}
+
   if $COLORTERM == 'gnome-terminal'
     set term=gnome-256color
   else
@@ -303,7 +346,7 @@ else
       set term=xterm-256color
     endif
   endif
-  
+
 endif
 
 
@@ -338,7 +381,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'onedark'
+let g:airline_theme = 'molokai'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -650,7 +693,7 @@ augroup END
 " html
 " for html files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
-
+let g:syntastic_html_tidy_ignore_errors=["is invalid", "is not recognized!", "discarding unexpected", "lack value"]
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
