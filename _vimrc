@@ -59,6 +59,7 @@ else
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-bundler'
   Plug 'tpope/vim-rake'
+  Plug 'robertbasic/vim-hugo-helper'
 endif
 let g:make = 'gmake'
 if exists('make')
