@@ -147,6 +147,9 @@ Plug 'arnaud-lb/vim-php-namespace'
 "" Python Bundle
 Plug 'davidhalter/jedi-vim'
 
+" Hashicorp
+"" Terraform
+Plug 'hashivim/vim-terraform'
 
 "*****************************************************************************
 "*****************************************************************************
@@ -653,8 +656,8 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_array_whitespace_error = 1
+let g:go_highlight_trailing_whitespace_error = 1
 let g:go_highlight_extra_types = 0
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4
@@ -799,3 +802,9 @@ let g:closetag_emptyTags_caseSensitive = 1
 let g:mta_use_matchparen_group = 1
 let g:mta_filetypes = { 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1, 'javascript': 1}
 nnoremap <leader>% :MtaJumpToOtherTag<cr>
+
+"" Terraform config
+let g:terraform_align=1
+autocmd FileType terraform setlocal commentstring=#%s
+
+set clipboard=unnamed
